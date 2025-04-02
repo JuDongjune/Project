@@ -1,0 +1,279 @@
+.story-list-wrapper {
+  position: sticky;
+  top: 0px; /* 헤더 바로 아래 */
+  background: white;
+  z-index: 998;
+  border-bottom: 1px solid #ddd;
+  padding: 0px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-scroll-container {
+  flex: 1;                 /* ✅ 남는 공간 다 채움 */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1px 0;
+  /* ✅ 아래 세 줄 추가 */
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE, Edge */
+}
+
+.story-scroll-container::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Opera */
+}
+
+.story-scroll-button {
+  background: #eee;
+  border: none;
+  font-size: 1.5rem;
+  width:2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  padding: 0.3rem; /* ✅ 내부 여백 확보 */
+}
+
+.story-scroll-button:disabled {
+  background: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.story-list {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.story-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.story-popup {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+.story-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.story-username {
+  font-family: 'Hahmlet';
+  font-weight: 900;
+  font-size: 0.8rem;
+  margin-top: 1px;
+}
+
+.like-button {
+  margin-top: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.like-button.liked {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.story-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 안 본 스토리 - 인스타 스타일 그라데이션 */
+.story-avatar.not-viewed {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+/* 본 스토리 - 회색 테두리 or 없음 */
+.story-avatar.viewed {
+  background: #ddd;
+}
+
+.story-border {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  padding: 2.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: gray; /* 기본 */
+}
+
+/* ✅ 안 본 스토리 (그라데이션 테두리) */
+.story-border.not-viewed {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+/* ✅ 본 스토리 (회색 테두리) */
+.story-border.viewed {
+  background: #ddd;
+}
+
+/* ✅ 프로필 사진 (안에 들어가는 사진) */
+.story-profile {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+}
+
+/* ✅ 아이콘 스타일 */
+.story-profile-icon {
+  font-size: 4.4rem;
+  color: #fff;
+}
+
+/* ✅ 댓글 목록 */
+.comment-list {
+  margin-top: 10px;
+  max-height: 120px;
+  overflow-y: auto;
+  text-align: left;
+  width: 100%;
+  padding: 5px 10px;
+  box-sizing: border-box;
+}
+
+.comment {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.comment-user {
+  font-weight: bold;
+  color: #444;
+  margin-right: 5px;
+}
+
+/* ✅ 댓글 입력창 */
+.comment-form {
+  display: flex;
+  margin-top: 10px;
+  gap: 5px;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 8px;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.comment-form button {
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.comment-form button:hover {
+  background: #444;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .story-list {
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .story-item {
+    font-size: 0.5rem;
+    margin-right: 10px;
+  }
+}
+
+@font-face {
+  font-family: 'BodoniModa';
+  src: url('../assets/fonts/BodoniModa-ExtraBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Hahmlet';
+  src: url('../assets/fonts/Hahmlet-Regular.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('../assets/fonts/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}

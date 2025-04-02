@@ -1,0 +1,257 @@
+/* ✅ 전체 화면 스타일 */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    margin: 0 auto;
+    background: url('../assets/image/Login/loginback.png') no-repeat center center/cover;
+}
+/* ✅ 입력 필드 라벨 스타일 */
+.input-label {
+  width: 85%;
+  max-width: 350px;
+  font-size: 1.0rem;
+  font-weight: bold;
+  font-family: 'Montserrat-Bold';
+  margin-bottom: 4px;
+  margin-top: 10px;
+  color: #333;
+  text-align: left;
+}
+
+/* ✅ 로고 */
+.register-logo {
+    width: 70%;
+    max-width: 480px;
+    margin-top: 1%;
+    margin-bottom: 8%;
+}
+
+/* ✅ 입력 필드 공통 스타일 */
+.register-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* ✅ 입력 필드 wrapper (아이콘 포함된 구조) */
+.input-wrapper {
+    position: relative;
+    width: 85%;
+    max-width: 350px;
+    margin-bottom: 10px;
+}
+
+/* ✅ 오른쪽 아이콘 (눈, 체크 등) */
+.eye-icon {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    cursor: default;
+}
+
+/* ✅ 눈 아이콘은 클릭 가능 */
+.eye-icon {
+    cursor: pointer;
+}
+
+/* ✅ 상태 메시지 */
+.register-message {
+    width: 85%;
+    max-width: 350px;
+    font-size: 0.75rem;
+    font-family: 'Montserrat-Bold';
+    margin-top: -5px;
+    margin-bottom: 8px;
+}
+
+.success {
+    color: #456e2a;
+}
+
+.error {
+    color: #942f2f;
+}
+
+.status-icon {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    color: white; /* ✅ 텍스트(✔, ✕) 색상을 흰색으로 고정 */
+}
+
+/* 성공일 때 - 초록 원 */
+.status-icon.success {
+    background-color: #00c8a5; /* 체크 이미지와 유사한 초록색 */
+}
+
+/* 실패일 때 - 빨간 원 */
+.status-icon.error {
+    background-color: #942f2f;
+}
+
+
+/* ✅ SEND 버튼 포함 input을 위한 padding 우측 확보 */
+.with-send {
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: #555;
+    cursor: pointer;
+}
+
+/* ✅ SEND 버튼 위치를 input 안쪽으로 */
+.send-button {
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    height: 30px;
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    font-size: 0.9rem;
+    padding: 0 0px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* ✅ 인증 코드 입력 박스 */
+.code-box {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left:15px;
+}
+.code-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+.code-box span {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.code-inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.code-inputs input {
+    width: 3rem;
+    height: 3rem;
+    font-size: 24px;
+    text-align: center;
+    border: 2px dotted #aaa;
+    border-radius: 5px;
+}
+
+/* ✅ security.png를 CSS 배경 이미지로 표시 */
+.security-icon {
+  width: 4.5rem;
+  height: 5.5rem;
+  background-image: url('../assets/image/register/security.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 8px 0;
+}
+
+
+.refresh-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url('../assets/image/register/refresh.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    border: none;
+    margin-top: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+
+/* ✅ REGISTER 버튼 */
+.register-button {
+    width: 90%;
+    max-width: 370px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left:15px;
+}
+
+.register-button:hover {
+    background-color: #333;
+}
+
+/* 📱 반응형 대응 */
+@media screen and (max-width: 480px) {
+    .register-container {
+        max-width: 480px;
+    }
+
+    .input-wrapper,
+    .register-message,
+    .code-box {
+        max-width: 90%;
+    }
+
+    .register-button {
+        max-width: 90%;
+    }
+}
+
+/* ✅ 폰트 */
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('../assets/fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}

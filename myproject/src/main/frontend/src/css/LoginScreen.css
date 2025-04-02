@@ -1,0 +1,114 @@
+/* ✅ 전체 화면 스타일 */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    margin: 0 auto;
+    background: url('../assets/image/Login/loginback2.png') no-repeat center center/cover;
+}
+
+/* ✅ 로고 */
+.login-logo {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 30%;
+    margin-bottom: 10%;
+}
+
+/* ✅ 입력 필드 */
+.login-input {
+    width: 85%;
+    max-width: 350px;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+/* ✅ 로그인 버튼 */
+.login-button {
+    width: 90%;
+    max-width: 370px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.login-button:hover {
+    background-color: #333;
+}
+
+/* ✅ 안내 텍스트 */
+.login-text {
+        font-size: 0.8rem;
+        font-weight: 900;
+        color: #black;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width:100%;
+        margin-top: 5%;
+        white-space: normal;
+        font-family: 'Montserrat-Bold';
+}
+
+/* ✅ 회원가입 & 아이디 찾기 - 같은 줄 배치 */
+.login-links {
+    display: flex; /* ✅ 가로 정렬 */
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #000;
+    font-family: 'Montserrat-Bold';
+}
+
+
+.login-links :hover {
+    text-decoration: underline;
+}
+
+/* ✅ 구분선 (|) */
+.divider {
+    margin: 0 5px; /* 좌우 간격 */
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* 📌 모바일 (최대 480px 이하) */
+@media screen and (max-width: 480px) {
+    .login-container {
+        max-width: 480px;
+    }
+
+    .login-input {
+        max-width: 85%;
+        padding: 12px;
+    }
+
+    .login-button {
+        max-width: 90%;
+        padding: 12px;
+        margin-top: 10px;
+    }
+}
+
+
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('../assets/fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
