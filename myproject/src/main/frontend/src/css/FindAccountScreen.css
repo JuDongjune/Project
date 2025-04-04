@@ -1,0 +1,122 @@
+/* FindAccountScreen.css */
+
+.find-account-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    margin: 0 auto;
+    background: url('../assets/image/Login/loginback.png') no-repeat center center/cover;
+}
+
+.input-label {
+    width: 85%;
+    max-width: 350px;
+    font-size: 1.0rem;
+    font-weight: bold;
+    font-family: 'Montserrat-Bold';
+    margin-bottom: 4px;
+    margin-top: 10px;
+    color: #333;
+    text-align: left;
+}
+
+.find-account-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.find-account-message {
+    margin-top: 10px;
+    font-size: 1rem;
+    font-family: 'Montserrat';
+    color: #555;
+    text-align: center;
+}
+
+.code-box {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 10px;
+    width: 80%;
+    max-width: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.code-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.code-inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.code-inputs input {
+    width: 3rem;
+    height: 3rem;
+    font-size: 24px;
+    text-align: center;
+    border: 2px dotted #aaa;
+    border-radius: 5px;
+}
+
+.send-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #0056b3;
+}
+
+.find-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.find-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.find-button.selected {
+    background-color: #218838;
+}
+
+.find-button:hover {
+    background-color: #218838;
+}
+
+.register-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;

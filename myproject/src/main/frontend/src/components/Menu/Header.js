@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // React Router 사용
-import "../../css/Header.css"; // ✅ 경로 수정!
-import { IoChevronBack, IoCartOutline, IoEllipsisHorizontal } from "react-icons/io5"; // 아이콘 추가
+import { useNavigate } from "react-router-dom";
+import "../../css/Header.css";
+import { IoChevronBack, IoEllipsisHorizontal } from "react-icons/io5";
 
 const Header = () => {
-  const navigate = useNavigate(); // 뒤로가기 기능
+  const navigate = useNavigate();
 
   return (
     <div className="header">
@@ -14,10 +14,10 @@ const Header = () => {
       </button>
 
       {/* 가운데: 로고 */}
-      <h1 className="header-logo">Daily Chapter</h1>
+      <h1 className="header-logo" onClick={() => navigate("/home")}>Daily Chapter</h1>
 
-      {/* 오른쪽: 목록 버튼 */}
-      <button className="header-button" onClick={() => navigate("/cart")}>
+      {/* 오른쪽: 옵션 버튼 */}
+      <button className="header-button" onClick={() => navigate("/cart")}> {/* 우측 메뉴 → 임시로 cart */}
         <IoEllipsisHorizontal size={25} />
       </button>
     </div>

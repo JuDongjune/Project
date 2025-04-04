@@ -28,7 +28,7 @@ const LoginScreen = () => {
             <div className="login-links">
               <p onClick={() => navigate("/register")} style={{ cursor: "pointer" }}>SIGN UP</p>
               <span className="divider">/</span>
-              <p>FIND ID</p>
+              <p onClick={() => navigate("/FindAccountScreen")} style={{ cursor: "pointer" }}>FIND ID</p>
             </div>
         </div>
     );

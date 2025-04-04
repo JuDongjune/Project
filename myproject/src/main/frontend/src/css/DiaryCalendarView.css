@@ -1,0 +1,79 @@
+.calendar-view {
+  padding: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 12px;
+}
+
+.react-calendar__tile {
+  position: relative;
+  height: 60px;
+  font-size: 0.85rem;
+  padding: 0.5rem;
+  transition: background 0.2s;
+}
+
+.react-calendar__tile.has-diary {
+  background-color: #fff6e6 !important;
+  font-weight: bold;
+  color: #333;
+  border-radius: 8px;
+}
+
+.emoji {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  font-size: 1.2rem;
+}
+
+.selected-diary-list {
+  margin-top: 1.2rem;
+  background: #fefefe;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.selected-diary-list h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  color: #444;
+}
+
+.selected-diary-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.selected-diary-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+@media screen and (max-width: 480px) {
+  .calendar-view {
+    padding: 0.8rem;
+  }
+
+  .react-calendar__tile {
+    height: 50px;
+    font-size: 0.75rem;
+  }
+
+  .emoji {
+    font-size: 1rem;
+  }
+}

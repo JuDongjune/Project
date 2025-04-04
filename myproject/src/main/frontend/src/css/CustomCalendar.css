@@ -78,7 +78,7 @@
 /* ✅ 모바일 반응형 */
 @media screen and (max-width: 480px) {
   .react-calendar__tile {
-    height: 3rem;
+    height: 4rem;
     font-size: 0.75rem;
   }
 
