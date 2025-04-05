@@ -11,6 +11,9 @@ public class UserDto {
     @Schema(description = "사용자 ID", example = "dongguk123")
     private String userId;
 
+    @Schema(description = "사용자 비밀번호", example = "22ehdrnr")
+    private String userPw;
+
     @Schema(description = "이름", example = "이동국")
     private String userName;
 
