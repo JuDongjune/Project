@@ -30,4 +30,9 @@ public class UserService {
 
         userRepository.save(user);
     }
+
+    //2025-04-05 sje 회원 탈퇴 서비스 추가
+    public void delete(UserDto dto) {
+        userRepository.deleteById(dto.getUserId());
+    }
 }

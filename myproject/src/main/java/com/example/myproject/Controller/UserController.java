@@ -27,4 +27,11 @@ public class UserController {
         return ResponseEntity.ok("회원가입 완료!");
     }
 
+    @DeleteMapping("/api/user/deleteUser/{userid}")
+    public ResponseEntity<String> deleteUser(@PathVariable("userid") UserDto dto) {
+        userService.delete(dto);
+        return ResponseEntity.ok("탈퇴가 완료.");
+    }
+
+
 }
