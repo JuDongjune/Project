@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @Operation(summary = "유저 등록", description = "새 유저를 저장합니다.")
-    @PostMapping
+    @PostMapping("/api/post")
     public UserDto saveUser(@RequestBody UserDto userDto) {
         return userService.saveUser(userDto);
     }

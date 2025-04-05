@@ -14,3 +14,13 @@ spring:
     show-sql: true
     properties:
       hibernate:
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+coolsms:
+  api:
+    key: NCSRH6Q6ILREH2QF
+    secret: C15D2OCMIHBW8UQ2ARMP2FBDAH8D0ZYX
