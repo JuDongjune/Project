@@ -1,6 +1,7 @@
 package com.example.myproject.Controller;
 
 import com.example.myproject.Dto.UserDto;
+import com.example.myproject.Dto.UserLoginDto;
 import com.example.myproject.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -27,4 +28,10 @@ public class UserController {
         return ResponseEntity.ok("회원가입 완료!");
     }
 
+    @PostMapping("/api/user/login")
+    @Operation(summary = "로그인", description = "사용자가 로그인을 합니다.")
+    public ResponseEntity<String> login(@RequestBody UserLoginDto dto){
+        userService.login(dto);
+        return ResponseEntity.ok("로그인 성공!");
+    }
 }
