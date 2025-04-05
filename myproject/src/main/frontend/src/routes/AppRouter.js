@@ -20,6 +20,7 @@ const AppRouter = () => {
                 <Route path="/NotificationScreen" element={<NotificationScreen/>} />
                 <Route path="/SearchScreen" element={<SearchScreen/>} />
                 <Route path="/FindAccountScreen" element={<FindAccountScreen/>} />
+                <Route path="/ProfileScreen" element={<ProfileScreen/>} />
             </Routes>
         </Router>
     );
