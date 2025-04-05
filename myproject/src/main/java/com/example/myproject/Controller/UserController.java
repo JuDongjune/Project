@@ -5,6 +5,7 @@ import com.example.myproject.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,15 +20,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @Operation(summary = "유저 등록", description = "새 유저를 저장합니다.")
-    @PostMapping("/api/post")
-    public UserDto saveUser(@RequestBody UserDto userDto) {
-        return userService.saveUser(userDto);
+    @PostMapping("/api/user/signup")
+    @Operation(summary = "회원가입", description = "사용자가 회원가입을 합니다.")
+    public ResponseEntity<String> signup(@RequestBody UserDto dto) {
+        userService.signup(dto);
+        return ResponseEntity.ok("회원가입 완료!");
     }
 
-    @Operation(summary = "유저 정보 조회", description = "ID로 유저 정보를 조회합니다.")
-    @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable Long id) {
-        return userService.getUser(id);
-    }
 }

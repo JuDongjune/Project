@@ -3,30 +3,31 @@ package com.example.myproject.Service;
 import com.example.myproject.Dto.UserDto;
 import com.example.myproject.Entity.User;
 import com.example.myproject.Repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.time.LocalDateTime;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    public void signup(UserDto dto) {
+        if (userRepository.existsByUserId(dto.getUserId())) {
+            throw new RuntimeException("이미 존재하는 아이디입니다.");
+        }
 
-    // 유저 등록
-    public UserDto saveUser(UserDto userDto) {
-        User user = new User(null, userDto.getName(), userDto.getEmail());
-        User saved = userRepository.save(user);
-        return new UserDto(saved.getId(), saved.getName(), saved.getEmail());
-    }
+        User user = new User();
+        user.setUserId(dto.getUserId());
+        user.setUserPw(dto.getUserPw());
+        user.setUserName(dto.getUserName());
+        user.setPhone(dto.getPhone());
+        user.setNickname(dto.getNickname());
+        user.setCreatedDt(LocalDateTime.now());
+        user.setUpdatedDt(LocalDateTime.now());
 
-    // 유저 조회
-    public UserDto getUser(Long id) {
-        Optional<User> userOpt = userRepository.findById(id);
-        return userOpt.map(user -> new UserDto(user.getId(), user.getName(), user.getEmail()))
-                .orElseThrow(() -> new RuntimeException("유저를 찾을 수 없습니다."));
+        userRepository.save(user);
     }
 }
