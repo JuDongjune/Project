@@ -51,5 +51,10 @@ public class UserController {
         userService.delete(dto);
         return ResponseEntity.ok("탈퇴 완료!");
     }
-
+    @PutMapping("/api/user/updateUser/{userid}")
+    @Operation(summary = "회원정보 수정",description = "사용자가 정보를 변경했습니다.")
+    public ResponseEntity<String> updateUser(@PathVariable("userid") UserDto dto) {
+        userService.updateUser(dto);
+        return ResponseEntity.ok("회원정보 수정 완료!");
+    }
 }
