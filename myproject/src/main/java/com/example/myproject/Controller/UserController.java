@@ -31,23 +31,24 @@ public class UserController {
         return userService.getUser(userid);
     }
 
-    @PostMapping("/api/user/signup")
+    @PostMapping("/signup")
     @Operation(summary = "회원가입", description = "사용자가 회원가입을 합니다.")
     public ResponseEntity<String> signup(@RequestBody UserDto dto) {
         userService.signup(dto);
         return ResponseEntity.ok("회원가입 완료!");
     }
 
-    @PostMapping("/api/user/login")
+    @PostMapping("/login")
     @Operation(summary = "로그인", description = "사용자가 ID/PW로 로그인합니다.")
     public ResponseEntity<String> login(@RequestBody UserLoginDto dto) {
         String token = userService.login(dto);
         return ResponseEntity.ok(token);
     }
 
-    @DeleteMapping("/api/user/deleteUser/{userid}")
+    @DeleteMapping("/deleteUser/{userid}")
     @Operation(summary = "회원탈퇴",description = "사용자가 탈퇴했습니다.")
-    public ResponseEntity<String> deleteUser(@PathVariable("userid") UserDto dto) {
+    public ResponseEntity<String> deleteUser(@PathVariable String userid, @RequestBody UserDto dto) {
+        dto.setUserId(userid);
         userService.delete(dto);
         return ResponseEntity.ok("탈퇴 완료!");
     }
