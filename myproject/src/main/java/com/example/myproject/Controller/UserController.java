@@ -47,9 +47,8 @@ public class UserController {
 
     @DeleteMapping("/deleteUser/{userid}")
     @Operation(summary = "회원탈퇴",description = "사용자가 탈퇴했습니다.")
-    public ResponseEntity<String> deleteUser(@PathVariable String userid, @RequestBody UserDto dto) {
-        dto.setUserId(userid);
-        userService.delete(dto);
+    public ResponseEntity<String> deleteUser(@PathVariable String userid) {
+        userService.delete(userid);
         return ResponseEntity.ok("탈퇴 완료!");
     }
 
