@@ -10,5 +10,5 @@ import java.util.Optional;
 
 public interface CommentsRepository extends JpaRepository<Comments, Long> {
     Optional<Comments> findByCommentId(Long commentId);
-    Page<Comments> findByDiaryOrderByCreatedDtDesc(Diary diary, Pageable pageable);
+    Page<Comments> findByDiaryOrderByCreatedDtAsc(Diary diary, Pageable pageable);
 }

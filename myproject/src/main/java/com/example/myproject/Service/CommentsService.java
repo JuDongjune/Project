@@ -51,8 +51,8 @@ public class CommentsService {
             diary = optionalDiary.get();
         }
         //페이지 번호는 0부터 시작 (즉, page=0이면 첫 페이지)
-        PageRequest pageRequest = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "createdDt"));
-        return commentsRepository.findByDiaryOrderByCreatedDtDesc(diary, pageRequest);
+        PageRequest pageRequest = PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC, "createdDt"));
+        return commentsRepository.findByDiaryOrderByCreatedDtAsc(diary, pageRequest);
     }
 
     //댓글 수정

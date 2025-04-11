@@ -61,19 +61,20 @@ public class DiaryService {
     public void editArticle(DiaryDto dto){
         Optional<Diary> optionalDiary = diaryRepository.findByBoardId(dto.getBoardId());
         Diary diary = null;
-        if(optionalDiary.isPresent()){
-            diary = optionalDiary.get();
-            diary.setTitle(dto.getTitle());
-            diary.setContent(dto.getContent());
-            diaryRepository.save(diary);
-        } else{
+        if(optionalDiary.isEmpty()){
             throw new RuntimeException("해당 게시글을 찾을 수 없습니다.");
+        } else{
+            diary = optionalDiary.get();
         }
+        diary.setTitle(dto.getTitle());
+        diary.setContent(dto.getContent());
+        diaryRepository.save(diary);
     }
 
     //다이어리 삭제
     public void deleteArticle(long boardId){
         Optional<Diary> optionalDiary = diaryRepository.findByBoardId(boardId);
+
         if(optionalDiary.isPresent()) {
             diaryRepository.deleteById(boardId);
         } else{

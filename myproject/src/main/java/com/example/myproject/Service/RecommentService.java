@@ -23,7 +23,7 @@ public class RecommentService {
     private final CommentsRepository commentsRepository;
 
     //대댓글 작성
-    public void writeRecomment(RecommentDto dto){
+    public void postRecomment(RecommentDto dto){
         Optional<User> optionalUser = userRepository.findById(dto.getUserId());
         Optional<Comments> optionalComments = commentsRepository.findByCommentId(dto.getCommentId());
 
@@ -51,12 +51,12 @@ public class RecommentService {
             comments = optionalComments.get();
         }
         //페이지 번호는 0부터 시작 (즉, page=0이면 첫 페이지)
-        PageRequest pageRequest = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "createdDt"));
-        return recommentRepository.findByCommentsOrderByCreatedDtDesc(comments, pageRequest);
+        PageRequest pageRequest = PageRequest.of(page, 10, Sort.by(Sort.Direction.ASC, "createdDt"));
+        return recommentRepository.findByCommentsOrderByCreatedDtAsc(comments, pageRequest);
     }
 
     //대댓글 수정
-    public void editRecomment(RecommentDto dto){
+    public void putRecomment(RecommentDto dto){
         Optional<User> optionalUser = userRepository.findById(dto.getUserId());
         Optional<Recomment> optionalRecomment = recommentRepository.findById(dto.getRecommentId());
         Recomment recomment = null;
@@ -67,11 +67,6 @@ public class RecommentService {
             throw new RuntimeException("해당 댓글을 찾을 수 없습니다.");
         }
         recomment = optionalRecomment.get();
-
-        if(recomment.getUser() != optionalUser.get()){
-            throw new RuntimeException("수정 권한이 없습니다.");
-        }
-
         recomment.setContent(dto.getContent());
         recommentRepository.save(recomment);
     }
