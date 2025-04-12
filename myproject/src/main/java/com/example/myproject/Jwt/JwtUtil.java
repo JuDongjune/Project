@@ -32,6 +32,7 @@ public class JwtUtil {
                 .getSubject();
     }
 
+
     // 토큰 유효성 검증
     public boolean validateToken(String token) {
         try {
