@@ -55,7 +55,7 @@ public class UserService {
         return jwtUtil.createToken(user.getUserId());
     }
 
-    public void delete(UserDto dto) {
-        userRepository.deleteById(dto.getUserId());
+    public void delete(String userId) {
+        userRepository.deleteById(userId);
     }
 }
