@@ -58,4 +58,23 @@ public class UserService {
     public void delete(String userId) {
         userRepository.deleteById(userId);
     }
+    //2025-04-05 사용자 정보 수정 추가 sje
+    public void updateUser(UserDto dto) {
+        //사용자 id 토큰 받아옴
+        User user = userRepository.findById(dto.getUserId())
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 사용자입니다."));
+
+        if(!user.getNickname().equals(dto.getNickname())) {
+                if(userRepository.existsByNickname(dto.getNickname())) {
+                    throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
+                }
+        }
+        user.setUserId(dto.getUserId());
+        user.setNickname(dto.getNickname());
+        user.setUserName(dto.getUserName());
+        user.setUserPw(dto.getUserPw());
+        user.setUpdatedDt(LocalDateTime.now());
+
+        userRepository.save(user);
+    }
 }

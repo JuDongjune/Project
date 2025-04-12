@@ -3,6 +3,7 @@ package com.example.myproject.Dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -24,8 +25,8 @@ public class UserDto {
     private String phone;
 
     @Schema(description = "생성일", example = "2025-04-05T15:00:00")
-    private String createdDt;
+    private LocalDateTime createdDt;
 
     @Schema(description = "수정일", example = "2025-04-05T15:00:00")
-    private String updatedDt;
+    private LocalDateTime updatedDt;
 }
