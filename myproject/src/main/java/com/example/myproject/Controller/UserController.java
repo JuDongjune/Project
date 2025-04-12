@@ -47,14 +47,15 @@ public class UserController {
 
     @DeleteMapping("/api/user/deleteUser/{userid}")
     @Operation(summary = "회원탈퇴",description = "사용자가 탈퇴했습니다.")
-    public ResponseEntity<String> deleteUser(@PathVariable("userid") UserDto dto) {
-        userService.delete(dto);
+    public ResponseEntity<String> deleteUser(@PathVariable("userid") String userId) {
+
+        userService.delete(userId);
         return ResponseEntity.ok("탈퇴 완료!");
     }
     @PutMapping("/api/user/updateUser/{userid}")
     @Operation(summary = "회원정보 수정",description = "사용자가 정보를 변경했습니다.")
-    public ResponseEntity<String> updateUser(@PathVariable("userid") UserDto dto) {
-        userService.updateUser(dto);
+    public ResponseEntity<String> updateUser(@PathVariable("userid") String userId,@RequestBody UserDto dto) {
+        userService.updateUser(userId,dto);
         return ResponseEntity.ok("회원정보 수정 완료!");
     }
 }

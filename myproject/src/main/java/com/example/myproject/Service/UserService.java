@@ -55,12 +55,12 @@ public class UserService {
         return jwtUtil.createToken(user.getUserId());
     }
 
-    public void delete(UserDto dto) {
-        userRepository.deleteById(dto.getUserId());
+    public void delete(String userId){
+        User user = userRepository.findById(userId).orElseThrow(()->new IllegalArgumentException("존재하지 않는 사용자입니다."));
+        userRepository.deleteById(userId);
     }
     //2025-04-05 사용자 정보 수정 추가 sje
-    public void updateUser(UserDto dto) {
-        //사용자 id 토큰 받아옴
+    public void updateUser(String userId,UserDto dto) {
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new RuntimeException("존재하지 않는 사용자입니다."));
 
@@ -69,7 +69,7 @@ public class UserService {
                     throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
                 }
         }
-        user.setUserId(dto.getUserId());
+        user.setUserId(userId);
         user.setNickname(dto.getNickname());
         user.setUserName(dto.getUserName());
         user.setUserPw(dto.getUserPw());
