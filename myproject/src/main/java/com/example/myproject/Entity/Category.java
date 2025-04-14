@@ -18,8 +18,9 @@ public class Category {
     @Column(name = "category_name",length = 45)
     private String  categoryName;
 
-    @Column(name = "user_id",length = 20,nullable = false)
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(name = "created_dt")
     private LocalDateTime createdDt;
