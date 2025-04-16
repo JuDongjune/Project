@@ -2,6 +2,9 @@ package com.example.myproject.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,9 +25,11 @@ public class Category {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @CreationTimestamp //자동생성
     @Column(name = "created_dt")
     private LocalDateTime createdDt;
 
+    @UpdateTimestamp //업데이트 자동생성
     @Column(name = "updated_dt")
     private LocalDateTime updatedDt;
 

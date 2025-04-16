@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -35,9 +37,11 @@ public class Todo {
     @JoinColumn(name = "categoryId")
     private Category category;
 
+    @CreationTimestamp //자동생성
     @Column(name = "created_dt")
     private LocalDateTime createdDt;
 
+    @UpdateTimestamp //업데이트 자동생성
     @Column(name = "updated_dt")
     private LocalDateTime updatedDt;
 
