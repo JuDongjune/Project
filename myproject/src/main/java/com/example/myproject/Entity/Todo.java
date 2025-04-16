@@ -25,10 +25,10 @@ public class Todo {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "todo_isdone",length = 10)
-    private String isDone;
+    private TodoStatus isDone;
     // 상태 변경 메서드
     public void changeStatus(TodoStatus isDone) {
-        this.isDone = String.valueOf(isDone);
+        this.isDone = isDone;
     }
     @Column(name = "user_id",length = 20,nullable = false)
     private Long userId;

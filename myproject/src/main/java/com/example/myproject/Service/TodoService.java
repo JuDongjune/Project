@@ -5,11 +5,13 @@ import com.example.myproject.Dto.TodoUpdateDto;
 import com.example.myproject.Entity.Todo;
 import com.example.myproject.Repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 @RequiredArgsConstructor
 public class TodoService {
 
@@ -76,7 +78,7 @@ public class TodoService {
 
                     todoDto.setTodoId(todo.getTodoId());
                     todoDto.setTodoContent(todo.getTodoContent());
-                    todoDto.setIsDone(todo.getIsDone());
+                    todoDto.setIsDone(String.valueOf(todo.getIsDone()));
 
                     todoDto.setDueDate(todo.getDueDate());
                     todoDto.setCreateDt(todo.getCreatedDt());

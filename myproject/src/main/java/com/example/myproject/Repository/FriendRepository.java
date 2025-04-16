@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FriendRepository extends JpaRepository<Friend, Long> {
-    Page<Friend> findByUserOrderByCreateDtDESC (User user, Pageable pageable);
+    Page<Friend> findByUserOrderByCreatedDtDesc(User user, Pageable pageable);
 }
