@@ -26,15 +26,14 @@ public class Todo {
     @Enumerated(EnumType.STRING)
     @Column(name = "todo_isdone",length = 10)
     private TodoStatus isDone;
-    // 상태 변경 메서드
-    public void changeStatus(TodoStatus isDone) {
-        this.isDone = isDone;
-    }
-    @Column(name = "user_id",length = 20,nullable = false)
-    private Long userId;
 
-    @Column(name = "category_id",length = 20,nullable = false)
-    private Long categoryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId")
+    private Category category;
 
     @Column(name = "created_dt")
     private LocalDateTime createdDt;
@@ -44,4 +43,9 @@ public class Todo {
 
     @Column(name = "due_date")
     private LocalDateTime dueDate;
+
+    // 상태 변경 메서드
+    public void changeStatus(TodoStatus isDone) {
+        this.isDone = isDone;
+    }
 }
