@@ -1,5 +1,6 @@
 package com.example.myproject.Jwt;
 
+import com.example.myproject.Entity.User;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +16,12 @@ public class JwtInitRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
         // 임시 username 으로 토큰 생성
-        String username = "testuser";
-        String token = jwtUtil.createToken(username);
+
+        User user = new User();
+        user.setUserId("testuser");
+        user.setSocialLogin(false);
+        user.setEmail("");
+        String token = jwtUtil.createToken(user);
 
         System.out.println("개발용 임시 JWT 토큰 생성 완료:");
         System.out.println("Bearer " + token);

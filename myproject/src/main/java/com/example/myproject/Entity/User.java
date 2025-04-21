@@ -24,7 +24,7 @@ public class User {
     @Column(name = "user_id", length = 20)
     private String userId;
 
-    @Column(name = "user_pw", length = 20, nullable = false)
+    @Column(name = "user_pw", length = 20, nullable = true) //소셜로그인 유저에겐 null임
     private String userPw;
 
     @Column(name = "user_name", length = 20, nullable = false)
@@ -32,6 +32,12 @@ public class User {
 
     @Column(name = "phone", length = 45)
     private String phone;
+
+    @Column(name = "email") //소셜로그인 유저만 있음
+    private String email;
+
+    @Column(name = "isSocialLogin", columnDefinition = "boolean default false")
+    private boolean isSocialLogin;
 
     @CreationTimestamp //자동생성
     @Column(name = "created_dt")
@@ -43,4 +49,12 @@ public class User {
 
     @Column(name = "nickname", length = 45, nullable = false, unique = true)
     private String nickname;
+
+    public static User of(String email){
+        User user = new User();
+        user.setUserId(email + "_kakao");
+        user.email = email;
+        user.setSocialLogin(true);
+        return user;
+    }
 }

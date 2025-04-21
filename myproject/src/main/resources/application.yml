@@ -20,7 +20,28 @@ spring:
       host: localhost
       port: 6379
 
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: "4efbd1da589b3688e61ea5f624d21002"
+            client-secret: "lOHTKRpMfRGdBKT6VJsJylI7Ta0TdnSE"  # 생략 가능
+            client-name: kakao
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            authorization-grant-type: authorization_code
+            scope:
+              - profile_nickname
+              - account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
 coolsms:
   api:
     key: NCSRH6Q6ILREH2QF
     secret: C15D2OCMIHBW8UQ2ARMP2FBDAH8D0ZYX
+

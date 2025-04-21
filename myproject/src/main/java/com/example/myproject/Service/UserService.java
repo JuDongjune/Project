@@ -52,7 +52,7 @@ public class UserService {
             throw new RuntimeException("비밀번호가 일치하지 않습니다.");
         }
 
-        return jwtUtil.createToken(user.getUserId());
+        return jwtUtil.createToken(user);
     }
 
     public void delete(String userId) {
