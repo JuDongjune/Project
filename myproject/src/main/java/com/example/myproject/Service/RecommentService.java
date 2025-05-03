@@ -1,6 +1,7 @@
 package com.example.myproject.Service;
 
-import com.example.myproject.Dto.RecommentDto;
+import com.example.myproject.Dto.RecommentEditDto;
+import com.example.myproject.Dto.RecommentWriteDto;
 import com.example.myproject.Entity.Comments;
 import com.example.myproject.Entity.Recomment;
 import com.example.myproject.Entity.User;
@@ -23,7 +24,7 @@ public class RecommentService {
     private final CommentsRepository commentsRepository;
 
     //대댓글 작성
-    public void postRecomment(RecommentDto dto){
+    public void postRecomment(RecommentWriteDto dto){
         Optional<User> optionalUser = userRepository.findById(dto.getUserId());
         Optional<Comments> optionalComments = commentsRepository.findByCommentId(dto.getCommentId());
 
@@ -56,26 +57,32 @@ public class RecommentService {
     }
 
     //대댓글 수정
-    public void putRecomment(RecommentDto dto){
-        Optional<User> optionalUser = userRepository.findById(dto.getUserId());
+    public void putRecomment(RecommentEditDto dto, String userId){
         Optional<Recomment> optionalRecomment = recommentRepository.findById(dto.getRecommentId());
         Recomment recomment = null;
-        if(optionalUser.isEmpty()){
-            throw new RuntimeException("수정 권한이 없습니다.");
-        }
         if(optionalRecomment.isEmpty()){
             throw new RuntimeException("해당 댓글을 찾을 수 없습니다.");
+        }else{
+            recomment = optionalRecomment.get();
         }
-        recomment = optionalRecomment.get();
+        if(!recomment.getUser().getUserId().equals(userId)){
+            throw new RuntimeException("수정 권한이 없습니다.");
+        }
         recomment.setContent(dto.getContent());
         recommentRepository.save(recomment);
     }
 
     //대댓글 삭제
-    public void deleteRecomment(long recommentId){
+    public void deleteRecomment(long recommentId, String userId){
         Optional<Recomment> optionalRecomment = recommentRepository.findById(recommentId);
+        Recomment recomment = null;
         if(optionalRecomment.isEmpty()){
             throw new RuntimeException("해당 댓글을 찾을 수 없습니다.");
+        }else{
+            recomment = optionalRecomment.get();
+        }
+        if(!recomment.getUser().getUserId().equals(userId)){
+            throw new RuntimeException("삭제 권한이 없습니다.");
         }
         recommentRepository.deleteById(recommentId);
     }

@@ -7,12 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FriendRequestDto {
-    @Schema(description = "친구목록ID", example = "1")
-    private long friendId;
+    @Schema(description = "사용자 유저 ID(요청 발신자)", example = "euijun")
+    private String senderId;
 
-    @Schema(description = "사용자 유저 ID", example = "euijun")
-    private String userId;
-
-    @Schema(description = "친구 유저 ID", example = "june")
-    private String friendUserId;
+    @Schema(description = "친구 유저 ID(요청 수신자)", example = "june")
+    private String receiverId;
 }

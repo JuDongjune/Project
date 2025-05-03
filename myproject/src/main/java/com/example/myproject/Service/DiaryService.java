@@ -1,6 +1,7 @@
 package com.example.myproject.Service;
 
-import com.example.myproject.Dto.DiaryDto;
+import com.example.myproject.Dto.DiaryEditDto;
+import com.example.myproject.Dto.DiaryWriteDto;
 import com.example.myproject.Entity.Diary;
 import com.example.myproject.Entity.User;
 import com.example.myproject.Jwt.JwtUtil;
@@ -22,7 +23,7 @@ public class DiaryService {
     private final JwtUtil jwtUtil;
 
     //다이어리 작성
-    public void writeBoard(DiaryDto dto){
+    public void writeBoard(DiaryWriteDto dto){
         //userId로 유저 조회
         Optional<User> _user = userRepository.findById(dto.getUserId());
         if(_user.isEmpty()){
@@ -58,7 +59,7 @@ public class DiaryService {
 
 
     //다이어리 수정
-    public void editArticle(DiaryDto dto){
+    public void editArticle(DiaryEditDto dto, String userId){
         Optional<Diary> optionalDiary = diaryRepository.findByBoardId(dto.getBoardId());
         Diary diary = null;
         if(optionalDiary.isEmpty()){
@@ -66,16 +67,22 @@ public class DiaryService {
         } else{
             diary = optionalDiary.get();
         }
+        if(!diary.getUser().getUserId().equals(userId)){
+            throw new RuntimeException("수정 권한이 없습니다.");
+        }
         diary.setTitle(dto.getTitle());
         diary.setContent(dto.getContent());
         diaryRepository.save(diary);
     }
 
     //다이어리 삭제
-    public void deleteArticle(long boardId){
+    public void deleteArticle(long boardId, String userId){
         Optional<Diary> optionalDiary = diaryRepository.findByBoardId(boardId);
 
         if(optionalDiary.isPresent()) {
+            if(!optionalDiary.get().getUser().getUserId().equals(userId)){
+                throw new RuntimeException("수정 권한이 없습니다.");
+            }
             diaryRepository.deleteById(boardId);
         } else{
             throw new RuntimeException("해당 게시글을 찾을 수 없습니다.");

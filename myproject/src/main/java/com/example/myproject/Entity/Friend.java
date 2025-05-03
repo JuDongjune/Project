@@ -1,6 +1,5 @@
 package com.example.myproject.Entity;
 
-import com.example.myproject.Common.FollowStatus;
 import com.example.myproject.Common.FriendStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -26,9 +25,6 @@ public class Friend {
     @Column(name = "friend_status", nullable = false)
     private FriendStatus friendStatus;
 
-    @Column(name = "follow_status")
-    private FollowStatus followStatus;
-
     @CreationTimestamp
     @Column(name = "created_dt")
     private LocalDateTime createdDt;
@@ -38,10 +34,10 @@ public class Friend {
     private LocalDateTime updatedDt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "sender_id", nullable = false)
+    private User sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "friend_user_id", nullable = false)
-    private User friendUser;
+    @JoinColumn(name = "receiver_id", nullable = false)
+    private User receiver;
 }

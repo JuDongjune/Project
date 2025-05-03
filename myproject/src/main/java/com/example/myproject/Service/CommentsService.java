@@ -1,6 +1,7 @@
 package com.example.myproject.Service;
 
-import com.example.myproject.Dto.CommentsDto;
+import com.example.myproject.Dto.CommentsEditDto;
+import com.example.myproject.Dto.CommentsWriteDto;
 import com.example.myproject.Entity.Comments;
 import com.example.myproject.Entity.Diary;
 import com.example.myproject.Entity.User;
@@ -23,7 +24,7 @@ public class CommentsService {
     private final UserRepository userRepository;
 
     //댓글 작성
-    public void writeReply(CommentsDto dto){
+    public void writeReply(CommentsWriteDto dto){
         Optional<User> optionalUser = userRepository.findById(dto.getUserId());
         Optional<Diary> optionalDiary = diaryRepository.findByBoardId(dto.getDiaryId());
 
@@ -56,30 +57,33 @@ public class CommentsService {
     }
 
     //댓글 수정
-    public void editReply(CommentsDto dto){
+    public void editReply(CommentsEditDto dto, String userId){
         Optional<Comments> optionalComments = commentsRepository.findByCommentId(dto.getCommentId());
-        Optional<User> optionalUser = userRepository.findById(dto.getUserId());
         Comments comments = null;
-        if(optionalUser.isEmpty()){
-            throw new RuntimeException("수정 권한이 없습니다.");
-        }
         if(optionalComments.isEmpty()){
             throw new RuntimeException("해당 댓글을 찾을 수 없습니다.");
+        }else{
+            comments = optionalComments.get();
         }
-
-        comments = optionalComments.get();
-        if(comments.getUser() != optionalUser.get()){
+        if(!comments.getUser().getUserId().equals(userId)){
             throw new RuntimeException("수정 권한이 없습니다.");
         }
+
         comments.setContent(dto.getContent());
         commentsRepository.save(comments);
     }
 
     //댓글 삭제
-    public void deleteReply(long commentId){
+    public void deleteReply(long commentId, String userId){
         Optional<Comments> optionalComments = commentsRepository.findByCommentId(commentId);
+        Comments comments = null;
         if(optionalComments.isEmpty()){
             throw new RuntimeException("해당 댓글을 찾을 수 없습니다.");
+        }else{
+            comments = optionalComments.get();
+        }
+        if(!comments.getUser().getUserId().equals(userId)){
+            throw new RuntimeException("수정 권한이 없습니다.");
         }
         commentsRepository.deleteById(commentId);
     }
