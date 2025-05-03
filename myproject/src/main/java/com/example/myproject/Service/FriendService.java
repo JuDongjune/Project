@@ -95,6 +95,6 @@ public class FriendService {
             _user = optionalUser.get();
         }
         PageRequest pageRequest = PageRequest.of(page, 10, Sort.by(Sort.Direction.DESC, "createdDt"));
-        return friendRepository.findByUserOrderByCreatedDtDesc(_user, pageRequest);
+        return friendRepository.findBySenderOrderByCreatedDtDesc(_user, pageRequest);
     }
 }
